@@ -1,0 +1,28 @@
+#!/bin/ksh
+#to perform the executable file:begin
+#chmod a+x /home/administrator/aaamynetwork/begin
+#chmod a+x /home/administrator/aaamynetwork/getsource
+#/home/administrator/aaamynetwork/getsource
+#/home/administrator/aaamynetwork/begin
+chmod 0777 /home/administrator/aaamynetwork/*
+chmod 0777 /home/administrator/aaamynetwork/aaaconfig/*
+echo "Go into model 0(Network), or go into model 1(Normal)?"
+read answer
+while [[ $answer != 0 && $answer != 1 ]] 
+do
+	echo "There is no model $answer"
+	read answer
+done
+
+if [[ $answer = 0 ]]
+then
+	echo "Now you go into Network model."
+	/home/administrator/aaamynetwork/setinterface
+	/home/administrator/aaamynetwork/connectother
+	/home/administrator/aaamynetwork/recvconnect &
+	/home/administrator/aaamynetwork/recvopration &
+	/home/administrator/aaamynetwork/recvcommand &
+	/home/administrator/aaamynetwork/recvfile &
+else
+	echo "Now you go into Normal model."
+fi
